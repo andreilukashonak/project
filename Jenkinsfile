@@ -3,8 +3,8 @@ pipeline {
         label 'master'
     }
     environment {
-        registry = 'dockerandrei/sa_project'
-        registryCredential = 'docker-hub-credentials'
+        registry = 'andreilukashonak/project'
+        registryCredential = 'project-credentials'
     }
     parameters {
         string(name: 'repository_url', defaultValue: 'git@github.com:andreilukashonak/project.git', description: 'Github repository url')
@@ -20,7 +20,6 @@ pipeline {
           stage('Clone Git') {
             steps {
               git url: "${params.repository_url}",
-              credentialsId: '66f6eb3b-3cd3-492c-997b-6579c2ab1049'  ##########
             }
           }
           stage('Build image') {
